@@ -8,10 +8,19 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public Node currentNode;
+
+    public CameraRig rig;
     
     void Awake() 
     {
-        ins = this;
+        if(ins != null && ins != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            ins = this;
+        }
     }
 
     // Update is called once per frame

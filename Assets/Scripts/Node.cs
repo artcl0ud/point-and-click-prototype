@@ -33,9 +33,8 @@ public abstract class Node : MonoBehaviour
         //set currentNode
         GameManager.ins.currentNode = this;
 
-        //set cameraPosition
-        Camera.main.transform.position = cameraPosition.position;
-        Camera.main.transform.rotation = cameraPosition.rotation;
+        //move cameraPosition
+        GameManager.ins.rig.AlignTo(cameraPosition);
 
         //turn off own collider
         if (col != null)
