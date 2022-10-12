@@ -1092,6 +1092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114914192}
   - component: {fileID: 1114914191}
+  - component: {fileID: 1114914193}
   m_Layer: 0
   m_Name: CameraRig
   m_TagString: Untagged
@@ -1111,8 +1112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce94c1ab2a255e479f320ed0b87829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAxis: {fileID: 963194228}
-  yAxis: {fileID: 1114914192}
+  x_Axis: {fileID: 963194228}
+  y_Axis: {fileID: 1114914192}
   moveTime: 0.75
 --- !u!4 &1114914192
 Transform:
@@ -1129,6 +1130,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1114914193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114914190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6590e20b5a4e34a99fc9d9e48af537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XSensitivity: 20
+  YSensitivity: 20
+  clampVerticalRotation: 1
+  MinimumX: -60
+  MaximumX: 60
+  smooth: 1
+  smoothTime: 5
 --- !u!1 &1309766461
 GameObject:
   m_ObjectHideFlags: 0
