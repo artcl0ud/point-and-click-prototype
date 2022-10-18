@@ -12,9 +12,10 @@ public abstract class Node : MonoBehaviour
     public Collider col;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         col = GetComponent<Collider>();
+        col.enabled = false;
     }
 
     void OnMouseDown() 
@@ -22,7 +23,7 @@ public abstract class Node : MonoBehaviour
         Arrive();
     }
 
-    public void Arrive()
+    public virtual void Arrive()
     {
         //leave existing currentNode if one exists
         if (GameManager.ins.currentNode != null)
@@ -33,6 +34,8 @@ public abstract class Node : MonoBehaviour
         //set currentNode
         GameManager.ins.currentNode = this;
 
+        //TODO: Add that when moving to a new location, and that Location does not have a prop attached, move to that location while keeping the camera position the same
+
         //move cameraPosition
         GameManager.ins.rig.AlignTo(cameraPosition);
 
@@ -42,24 +45,23 @@ public abstract class Node : MonoBehaviour
             col.enabled = false;
         }
 
-        //turn on colliders of reachable nodes
-        foreach (Node node in reachableNodes)
-        {
-            if (node.col != null)
-            {
-                node.col.enabled = true;
-            }
-        }
+        //turn on colliders of reachable nodes from current node
+        SetReachableNodes(true);
     }
 
-    public void Leave()
+    public virtual void Leave()
     {
-        //turn off colliders of reachable nodes
+        //turn off colliders of unreachable nodes from current node
+        SetReachableNodes(false);
+    }
+
+    public void SetReachableNodes(bool set)
+    {
         foreach (Node node in reachableNodes)
         {
             if (node.col != null)
             {
-                node.col.enabled = false;
+                node.col.enabled = set;
             }
         }
     }
