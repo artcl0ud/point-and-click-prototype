@@ -22,9 +22,13 @@ public class Prop : Node
         
         base.Arrive();
 
-        //Make this object interactable
+        //Make this object interactable if prerequesite is met
         if (inter != null)
         {
+            if(GetComponent<Prerequisite>() && !GetComponent<Prerequisite>().Complete)
+            {
+                return;
+            }
             col.enabled = true;
             inter.enabled = true;
         }

@@ -6,12 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager ins;
     public IVCanvas ivCanvas;
-
     public OBSCamera obsCamera;
+    public InventoryDisplay InvDisplay;
 
     [HideInInspector]
     public Node currentNode;
     public Node startingNode;
+    
+    //For multiple items in inventory; use an array or list were you can add/subtract elements from
+    public Item itemHeld;
 
     public CameraRig rig;
     

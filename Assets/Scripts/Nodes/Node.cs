@@ -7,6 +7,7 @@ public abstract class Node : MonoBehaviour
 {
     public Transform cameraPosition;
     public List<Node> reachableNodes = new List<Node>();
+    public bool ignoreCameraRotation;
     
     [HideInInspector]
     public Collider col;
@@ -61,7 +62,17 @@ public abstract class Node : MonoBehaviour
         {
             if (node.col != null)
             {
-                node.col.enabled = set;
+                if(node.GetComponent<Prerequisite>() && node.GetComponent<Prerequisite>().nodeAccess)
+                {
+                    if(node.GetComponent<Prerequisite>().Complete)
+                    {
+                        node.col.enabled = set;
+                    }
+                } 
+                else 
+                {
+                    node.col.enabled = set;
+                }
             }
         }
     }
