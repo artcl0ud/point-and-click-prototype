@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Prop : Node
+[System.Serializable]
+public class Item
 {
-    public Location loc;
+    public string itemName;
 }
